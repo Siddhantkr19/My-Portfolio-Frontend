@@ -1,0 +1,75 @@
+/* 1. Define variables for an attractive, modern theme */
+:root {
+  --accent-color: #007BFF;
+  --accent-text-color: #ffffff;
+}
+
+/* 2. Define variables for the DARK theme */
+/* In your index.css file */
+
+/* 2. Define variables for the DARK theme */
+body.dark {
+  --bg-color: #1A1D24;
+  --text-color: #F0F2F5;
+  --card-bg: #2C2F36;
+  --border-color: #40444C;
+  --skill-pill-bg: #4A5568;  /* <-- ADD THIS LINE */
+  --skill-pill-text: #F0F2F5; /* <-- ADD THIS LINE */
+}
+
+/* 3. Define variables for the LIGHT theme */
+body.light {
+  --bg-color: #F4F7F9;
+  --text-color: #181818;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --skill-pill-bg: #E2E8F0;  /* <-- ADD THIS LINE */
+  --skill-pill-text: #2D3748; /* <-- ADD THIS LINE */
+}
+
+/* 4. Apply the variables to the whole page */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+main > section {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border-color);
+}
+
+main > section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+/* 5. GLOBAL BUTTON STYLE */
+.btn {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: var(--accent-text-color);
+  padding: 12px 24px;
+  border: 2px solid var(--accent-color);
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+}

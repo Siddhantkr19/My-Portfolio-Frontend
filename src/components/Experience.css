@@ -1,0 +1,8 @@
+.experience-container { display: flex; flex-direction: column; align-items: center; }
+.experience-card { background-color: var(--card-bg); border-radius: 8px; border: 1px solid var(--border-color); padding: 2rem; max-width: 700px; width: 100%; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+.job-title { margin-top: 0; font-size: 1.8rem; color: var(--accent-color); }
+.company-info { font-size: 1.1rem; font-weight: 500; margin: 0.5rem 0; }
+.job-duration { font-size: 1rem; color: #888; margin-bottom: 1.5rem; }
+.light .job-duration { color: #555; }
+.job-duties { padding-left: 20px; margin: 0; }
+.job-duties li { font-size: 1rem; line-height: 1.6; margin-bottom: 0.5rem; }
