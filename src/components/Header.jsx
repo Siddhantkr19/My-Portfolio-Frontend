@@ -75,11 +75,8 @@ function Header() {
         </ul>
       </nav>
 
-      {/* Header Widgets */}
-      <div className="header-widgets">
-        <div className="visitor-counter" title="Total Visitors">
-           Visitors: {visitCount}
-        </div>
+     
+     
         
         <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle Theme">
           {theme === 'dark' ? <FaSun className="icon-sun" /> : <FaMoon className="icon-moon" />}
@@ -89,7 +86,7 @@ function Header() {
         <div className="hamburger" onClick={toggleMenu}>
           {isOpen ? <FaTimes /> : <FaBars />}
         </div>
-      </div>
+     
     </header>
   );
 }
