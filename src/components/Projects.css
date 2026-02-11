@@ -2,37 +2,86 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  padding: 2rem 0;
 }
 
+/* Titles */
+.section-title {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.learning-title {
+  margin-top: 5rem; /* Distinct separation */
+  font-size: 1.8rem;
+  color: var(--accent-color);
+  opacity: 0.9;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 3rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* --- GRID LAYOUTS --- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem;
   width: 100%;
+  max-width: 1300px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
+/* Complex Projects: 2 Columns large cards */
+.complex-grid {
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+}
+
+/* Learning Projects: 3 Columns smaller cards */
+.learning-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* --- CARD STYLES --- */
 .project-card {
   background-color: var(--card-bg);
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid var(--border-color);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 123, 255, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 123, 255, 0.1);
+  border-color: var(--accent-color);
+}
+
+/* Complex Card Specifics */
+.project-image-wrapper {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .project-image {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.project-info {
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-content {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -40,44 +89,137 @@
 }
 
 .project-title {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  margin: 0 0 0.8rem 0;
   color: var(--text-color);
 }
 
 .project-description {
   font-size: 1rem;
   line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
   flex-grow: 1;
 }
 
+/* Learning Card Specifics */
+.learning-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.learning-icon {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.project-title-small {
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+.project-description-small {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  opacity: 0.85;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+/* --- TECH PILLS --- */
 .project-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Find the old .tech-pill rule and replace it with this */
-
 .tech-pill {
-  background-color: var(--skill-pill-bg); /* Uses the gray from your skills page */
-  color: var(--skill-pill-text);         /* Uses the text color from your skills page */
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
-/* --- ADD THIS NEW RULE --- */
-.tech-pill:hover {
-  background-color: #0056b3; /* A darker blue on hover */
-  cursor: default;
+.tech-pill-small {
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-.project-links {
+/* --- ACTIONS --- */
+.project-actions {
   display: flex;
   gap: 1rem;
   margin-top: auto;
+}
+
+.link-text {
+  margin-top: auto;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  transition: color 0.2s;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.link-text:hover {
+  color: var(--accent-color);
+}
+
+/* Buttons */
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  background-color: var(--accent-color);
+  color: var(--accent-text-color);
+  border: 1px solid var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.btn-sm:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+}
+
+.btn-outline.btn-sm {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.btn-outline.btn-sm:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .complex-grid, .learning-grid {
+    grid-template-columns: 1fr;
+  }
 }

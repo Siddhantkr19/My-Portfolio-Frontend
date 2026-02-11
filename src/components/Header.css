@@ -1,110 +1,146 @@
+/* Header Container */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5%;
-  background-color: var(--card-bg); /* Use theme variable */
+  padding: 0 5%;
+  background-color: var(--card-bg); /* Matches theme */
   border-bottom: 1px solid var(--border-color);
-  position: sticky;
+  position: sticky; /* Stays at top when scrolling */
   top: 0;
   z-index: 1000;
-  width: 90%;
-  transition: background-color 0.3s, border-color 0.3s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  height: 70px;
 }
 
+/* Logo */
 .logo {
   font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--text-color); /* Use theme variable */
+  font-weight: 800;
+  color: var(--accent-color);
+  cursor: pointer;
+  letter-spacing: 0.5px;
 }
 
-.navigation {
-  display: flex;
-  align-items: center;
-}
-
+/* Navigation Links */
 .nav-links {
-  list-style: none;
   display: flex;
+  gap: 2rem;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .nav-links li {
-  padding: 0 15px;
   cursor: pointer;
-  color: var(--text-color); /* Use theme variable */
-  font-weight: 500;
-  transition: color 0.3s ease;
 }
 
-.nav-links li:hover {
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
   color: var(--accent-color);
 }
 
+/* Underline effect on hover */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Header Widgets (Visitor, Theme, Hamburger) */
 .header-widgets {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 1.5rem;
 }
 
 .visitor-counter {
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.85rem;
   color: var(--text-color);
+  background: var(--bg-color);
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  opacity: 0.8;
+  white-space: nowrap;
 }
 
+/* Theme Toggle Button */
 .theme-toggle {
   background: none;
   border: none;
+  cursor: pointer;
   color: var(--text-color);
   font-size: 1.2rem;
-  cursor: pointer;
   display: flex;
   align-items: center;
+  transition: transform 0.3s ease;
 }
 
+.theme-toggle:hover {
+  transform: rotate(20deg);
+  color: var(--accent-color);
+}
+
+.icon-sun { color: #f9d71c; } 
+.icon-moon { color: #a0a0a0; }
+
+/* Hamburger Menu (Mobile) */
 .hamburger {
   display: none;
+  font-size: 1.5rem;
   cursor: pointer;
+  color: var(--text-color);
 }
 
-.hamburger .line {
-  width: 25px;
-  height: 3px;
-  background-color: var(--text-color);
-  margin: 5px 0;
-}
+/* RESPONSIVE DESIGN (Mobile) */
+@media (max-width: 900px) {
+  .hamburger {
+    display: block; 
+  }
 
-/* --- Responsive Styles for Mobile --- */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
+  .navigation {
     position: absolute;
-    top: 70px; /* Adjust this value to match your header's height */
-    right: 0;
+    top: 70px; /* Directly below header */
+    left: 0;
     width: 100%;
     background-color: var(--card-bg);
-    text-align: center;
-    padding: 1rem 0;
     border-bottom: 1px solid var(--border-color);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   }
 
-  .nav-links.open {
-    display: flex;
-  }
-  
-  .nav-links li {
-    padding: 15px 0;
-  }
-  
-  .hamburger {
-    display: block;
+  .navigation.active {
+    max-height: 350px; /* Expand menu */
   }
 
-  /* Optionally hide the visitor counter on small screens to save space */
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+
   .visitor-counter {
-    display: none;
+    display: none; /* Hide visitor count on mobile to save space */
   }
 }

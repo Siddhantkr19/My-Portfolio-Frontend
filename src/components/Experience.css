@@ -1,8 +1,116 @@
-.experience-container { display: flex; flex-direction: column; align-items: center; }
-.experience-card { background-color: var(--card-bg); border-radius: 8px; border: 1px solid var(--border-color); padding: 2rem; max-width: 700px; width: 100%; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
-.job-title { margin-top: 0; font-size: 1.8rem; color: var(--accent-color); }
-.company-info { font-size: 1.1rem; font-weight: 500; margin: 0.5rem 0; }
-.job-duration { font-size: 1rem; color: #888; margin-bottom: 1.5rem; }
-.light .job-duration { color: #555; }
-.job-duties { padding-left: 20px; margin: 0; }
-.job-duties li { font-size: 1rem; line-height: 1.6; margin-bottom: 0.5rem; }
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* The vertical line container */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* The vertical line itself */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: var(--border-color);
+  top: 0;
+  bottom: 0;
+  left: 20px; /* Aligns line to the left */
+  margin-left: -2px;
+}
+
+/* Individual Job Card */
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+}
+
+/* The Icon Circle */
+.timeline-icon {
+  position: absolute;
+  left: 0; 
+  width: 40px;
+  height: 40px;
+  right: auto;
+  background-color: var(--card-bg);
+  border: 4px solid var(--accent-color);
+  top: 0;
+  border-radius: 50%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+/* The Card Content */
+.timeline-content {
+  padding: 20px 30px;
+  background-color: var(--card-bg);
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 123, 255, 0.1);
+  border-color: var(--accent-color);
+}
+
+.timeline-date {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timeline-role {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.timeline-company {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.8;
+  color: var(--text-color);
+}
+
+.timeline-description {
+  margin-top: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .timeline::after {
+    left: 20px;
+  }
+  .timeline-item {
+    padding-left: 60px;
+    padding-right: 10px;
+  }
+  .timeline-icon {
+    left: 0;
+  }
+}

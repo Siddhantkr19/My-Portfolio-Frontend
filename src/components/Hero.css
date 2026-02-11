@@ -1,17 +1,181 @@
+/* --- LAYOUT GRID --- */
 .hero-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 4%;
+  width: 100%;
+  max-width: 100%;
+  min-height: 85vh;
+  box-sizing: border-box;
+}
+
+/* --- COLUMN 1: LEFT (Photo) --- */
+.hero-left {
+  flex: 0 0 250px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.hero-profile-img {
+  width: 250px; 
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--accent-color);
+  box-shadow: 0 0 30px rgba(0, 123, 255, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.hero-profile-img:hover {
+  transform: scale(1.02);
+}
+
+/* --- COLUMN 2: MIDDLE (Text & Buttons) --- */
+.hero-middle {
+  flex: 1;
+  text-align: center;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.hero-name {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.hero-headline {
+  font-size: 2rem;
+  margin: 0.5rem 0 0rem 0;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+  max-width: 850px;
   text-align: center;
 }
 
-.hero-content { max-width: 800px; }
-.hero-name { font-size: 4.5rem; font-weight: 700; color: var(--text-color); margin: 0; }
-.hero-headline { font-size: 1.8rem; margin: 1rem 0; color: var(--accent-color); font-weight: 500; }
-.hero-description { font-size: 1.1rem; margin: 2rem 0; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; }
-.hero-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2.5rem; }
+/* --- BUTTON GRID (2 Rows x 3 Cols) --- */
+.hero-social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 650px;
+}
 
-@media (max-width: 768px) {
-  .hero-name { font-size: 3rem; }
-  .hero-headline { font-size: 1.5rem; }
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 10px; 
+  border: 2px solid var(--border-color); /* Standard gray/white border */
+  background: var(--card-bg); /* Standard background */
+  color: var(--text-color); /* Standard text color */
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  white-space: nowrap; 
+}
+
+/* Hover Effect for ALL buttons (including LibHub) */
+.btn-social:hover {
+  border-color: var(--accent-color); /* Turns Blue */
+  background-color: var(--accent-color); /* Turns Blue */
+  color: var(--accent-text-color); /* Text turns White */
+  transform: translateY(-3px);
+}
+
+/* Removed the specific btn-highlight style so it looks just like the others */
+/* .btn-highlight { ... deleted ... } */
+
+/* --- COLUMN 3: RIGHT (Rotating Circle) --- */
+.hero-right {
+  flex: 0 0 200px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.resume-circle-link {
+  text-decoration: none;
+  cursor: pointer;
+  display: block; 
+}
+
+.resume-circle {
+  position: relative;
+  width: 150px; 
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px dashed var(--border-color); 
+}
+
+.rotating-text {
+  width: 100%;
+  height: 100%;
+  animation: rotate 15s linear infinite; 
+  fill: var(--text-color);
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 2.5px;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.circle-icon {
+  position: absolute;
+  font-size: 1.6rem;
+  color: var(--accent-color);
+  animation: bounce 2s infinite; 
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+@media (max-width: 1200px) {
+  .hero-container {
+    flex-direction: column;
+    padding: 3rem 1rem;
+    gap: 2rem;
+  }
+  
+  .hero-left, .hero-middle, .hero-right {
+    justify-content: center;
+    padding: 0;
+    flex: auto;
+    width: 100%;
+  }
+
+  .hero-left { order: 1; }
+  .hero-middle { order: 2; }
+  .hero-right { order: 3; margin-top: 1rem; }
+
+  .hero-social-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 450px;
+    gap: 1rem;
+  }
 }

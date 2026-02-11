@@ -2,63 +2,123 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  padding: 2rem 0;
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  /* FORCE 3 COLUMNS */
+  grid-template-columns: repeat(3, 1fr); 
+  /* INCREASED GAP to prevent overlap */
+  gap: 2.5rem; 
+  row-gap: 3rem; /* Extra space vertically between rows */
   width: 100%;
+  max-width: 1300px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  /* Prevents cards from stretching to match the tallest one */
+  align-items: start; 
 }
 
 .skill-category-card {
   background-color: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #333;
+  padding: 1.8rem; /* More internal padding */
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.light .skill-category-card {
-  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Removed height: 100% so card fits content perfectly */
+  height: auto; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .skill-category-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 123, 255, 0.15);
+  border-color: var(--accent-color);
 }
 
-.skill-category-card h3 {
+.category-title {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: var(--accent-color);
-  border-bottom: 2px solid var(--accent-color);
-  padding-bottom: 0.5rem;
-  display: inline-block;
+  font-size: 1.25rem;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  width: 100%;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 12px;
 }
 
+/* --- VERTICAL LIST LAYOUT --- */
 .skills-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  flex-direction: column; /* Forces 1 topic per row */
+  gap: 1rem; /* Space between chips */
+  width: 100%; 
 }
 
-/* Replace the old .skill-pill rule with this one */
-
-.skill-pill {
-  background-color: var(--skill-pill-bg);
-  color: var(--skill-pill-text);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
+/* The Skill Chip (Icon + Text) */
+.skill-chip {
+  background-color: var(--bg-color); 
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
   font-weight: 500;
-  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+  cursor: default;
+  width: 100%; 
+  box-sizing: border-box;
 }
 
-.skill-pill:hover {
-  transform: scale(1.05);
+.skill-chip:hover {
+  border-color: var(--accent-color);
+  transform: translateX(5px);
 }
 
-.light .skill-pill {
-  background-color: #e0e0e0;
+/* --- ICON COLORS --- */
+.skill-icon { font-size: 1.3rem; min-width: 24px; } /* Fixed width ensures alignment */
+
+.java { color: #f89820; }
+.spring { color: #6db33f; }
+.hibernate { color: #b66dff; }
+.micro { color: #007acc; }
+.api { color: #85ea2d; }
+.react { color: #61dafb; }
+.js { color: #f7df1e; }
+.html { color: #e34f26; }
+.css { color: #1572b6; }
+.tailwind { color: #38b2ac; }
+.mysql { color: #4479a1; }
+.postgres { color: #336791; }
+.redis { color: #d82c20; }
+.sql { color: #00758f; }
+.docker { color: #2496ed; }
+.git { color: #f05032; }
+.postman { color: #ef5b25; }
+.bash { color: #4eaa25; }
+.dsa { color: #ea4335; } 
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .skills-grid {
+    grid-template-columns: 1fr; 
+    gap: 1.5rem;
+  }
 }

@@ -1,80 +1,67 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './Contact.css';
+import emailjs from '@emailjs/browser';
+import { FaPaperPlane, FaEnvelope, FaUser, FaCommentDots } from 'react-icons/fa';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [responseMessage, setResponseMessage] = useState('');
+  const form = useRef();
+  const [status, setStatus] = useState(''); // 'sending', 'success', 'error'
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    setResponseMessage('Sending...');
+    setStatus('sending');
 
-    try {
-      const response = await fetch('https://my-portfolio-backend-app-1-0-0.onrender.com/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+    // YOUR ACTUAL EMAILJS KEYS
+    const SERVICE_ID = 'service_ih8m3js';
+    const TEMPLATE_ID = 'template_483641e';
+    const PUBLIC_KEY = 'HCFWRZT9puK3K7UKy';
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then((result) => {
+          console.log(result.text);
+          setStatus('success');
+          e.target.reset(); // Clear form
+          setTimeout(() => setStatus(''), 5000); // Reset status after 5s
+      }, (error) => {
+          console.log(error.text);
+          setStatus('error');
       });
-   
-      if (response.ok) {
-        setResponseMessage('Message sent successfully!');
-        setFormData({ name: '', email: '', message: '' }); // Reset form
-      } else {
-        setResponseMessage('Error: Could not send message. Please try again.');
-      }
-    } catch (error) {
-      console.error('Network error:', error);
-      setResponseMessage('Error: Could not connect to the server.');
-    }
   };
 
   return (
     <div className="contact-container">
       <h2 className="section-title">Get In Touch</h2>
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="form-input"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="form-input"
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          className="form-textarea"
-        ></textarea>
-        <button type="submit" className="btn">Send Message</button>
-      </form>
-      {responseMessage && <p className="response-message">{responseMessage}</p>}
+      <p className="contact-subtitle">
+        Have a project in mind or want to discuss Java, Spring Boot, or System Design? 
+        Drop me a message!
+      </p>
+
+      <div className="contact-wrapper">
+        <form ref={form} onSubmit={sendEmail} className="contact-form">
+          
+          <div className="form-group">
+            <div className="input-icon"><FaUser /></div>
+            <input type="text" name="user_name" placeholder="Your Name" required className="form-input" />
+          </div>
+
+          <div className="form-group">
+            <div className="input-icon"><FaEnvelope /></div>
+            <input type="email" name="user_email" placeholder="Your Email" required className="form-input" />
+          </div>
+
+          <div className="form-group">
+            <div className="input-icon textarea-icon"><FaCommentDots /></div>
+            <textarea name="message" placeholder="Your Message..." required className="form-input form-textarea"></textarea>
+          </div>
+
+          <button type="submit" className="btn btn-submit" disabled={status === 'sending'}>
+            {status === 'sending' ? 'Sending...' : <>Send Message <FaPaperPlane /></>}
+          </button>
+
+          {status === 'success' && <p className="msg-success">✅ Message sent successfully!</p>}
+          {status === 'error' && <p className="msg-error">❌ Failed to send. Please check your connection.</p>}
+        </form>
+      </div>
     </div>
   );
 };
