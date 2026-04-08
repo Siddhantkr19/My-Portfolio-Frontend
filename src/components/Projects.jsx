@@ -18,7 +18,7 @@ const complexProjects = [
   {
     id: 2,
     image: projectImg,
-    title: 'Internship Portal',
+    title: 'AI-Powered Internship & Job Aggregator',
     description: 'A full-stack platform with Role-Based Access Control (Admin/User). Features a secure admin dashboard for managing internship applications and user data, built with a robust Spring Boot backend.',
     technologies: ['React.js', 'Spring Boot', 'MySQL', 'Hibernate'],
     liveDemo: 'https://internshipwithputul.netlify.app/',
