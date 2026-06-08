@@ -21,14 +21,14 @@ const About = () => {
           
           <p>
             I am a <strong>Final-Year B.Tech CSE student</strong> at UCET Hazaribagh. 
-            [cite_start]My journey is unique—I started in <strong>Mechanical Engineering</strong>[cite: 8], where I developed discipline and analytical thinking, 
+            My journey is unique—I started in <strong>Mechanical Engineering</strong>, where I developed discipline and analytical thinking, 
             before discovering my true passion for building scalable software.
           </p>
           
           <p>
             Today, I am a <strong>Java Full Stack Developer</strong> driven by logic and performance. 
-            [cite_start]I have solved over <strong>750+ DSA problems</strong> [cite: 15] across LeetCode and GFG, demonstrating my strong grasp of 
-            complex algorithms. [cite_start]I specialize in building secure backends with <strong>Spring Boot</strong> and dynamic frontends with <strong>React</strong>[cite: 13, 17].
+            I have solved over <strong>750+ DSA problems</strong> across LeetCode and GFG, demonstrating my strong grasp of 
+            complex algorithms.I specialize in building secure backends with <strong>Spring Boot</strong> and dynamic frontends with <strong>React</strong>.
           </p>
 
           <p>
