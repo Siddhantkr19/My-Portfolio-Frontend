@@ -21,7 +21,7 @@ const About = () => {
           
           <p>
             I am a <strong>Final-Year B.Tech CSE student</strong> at UCET Hazaribagh. 
-            My journey is unique—I started in <strong>Mechanical Engineering</strong>, where I developed discipline and analytical thinking, 
+            My journey is unique  I started in <strong>Mechanical Engineering</strong>, where I developed discipline and analytical thinking, 
             before discovering my true passion for building scalable software.
           </p>
           
